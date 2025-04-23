@@ -3,7 +3,7 @@ import { Badge } from "./ui/badge";
 
 const LatestJobCards = () => {
   return (
-    <div className="flex flex-col items-start p-3 mx-6 mt-8 rounded-md shadow-xl bg-white border border-purple-500">
+    <div className="flex flex-col items-start p-3 mx-2 mt-8 rounded-md shadow-xl bg-white border border-gray-200">
       <div>
         <h1 className="font-medium text-lg ">Company Name</h1>
         <p className="tetx-sm flex text-gray-500">India</p>
