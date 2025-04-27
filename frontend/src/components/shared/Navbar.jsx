@@ -7,13 +7,35 @@ import {
 import { Button } from "../ui/button";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { LogOut, Pointer, User2 } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import store from "@/redux/store";
+import { USER_API_END_POINT } from "@/utils/constant";
+import { toast } from "sonner";
+import axios from "axios";
+import { setUser } from "@/redux/authSlice";
 
 const Navbar = () => {
   // const user = true;
   const { user } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logoutHandler = async () => {
+    try {
+      const res = await axios.get(`${USER_API_END_POINT}/logout`, {
+        withCredentails: true,
+      });
+      if (res.data.success) {
+        dispatch(setUser(null));
+        navigate("/");
+        toast.success(res.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
   return (
     <div className="bg-purple-400 sticky">
       <div className="flex items-center justify-between px-15 mx-auto max-w-7xl h-16">
@@ -84,7 +106,11 @@ const Navbar = () => {
                     </Button>{" "}
                   </Button>
 
-                  <Button variant="link" className="cursor-pointer">
+                  <Button
+                    onClick={logoutHandler}
+                    variant="link"
+                    className="cursor-pointer"
+                  >
                     <LogOut /> Logout{" "}
                   </Button>
                 </div>
