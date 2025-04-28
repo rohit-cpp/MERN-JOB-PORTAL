@@ -7,8 +7,10 @@ import Jobs from "./components/Jobs";
 import Browse from "./components/Browse";
 import Profile from "./components/Profile";
 import JobDescription from "./components/JobDescription";
+import Companies from "./components/admin/companies";
 
 const appRouter = createBrowserRouter([
+  // student starts form here
   { path: "/", element: <Home /> },
   { path: "/login", element: <Login /> },
   { path: "/signup", element: <Signup /> },
@@ -16,6 +18,12 @@ const appRouter = createBrowserRouter([
   { path: "/description/:id", element: <JobDescription /> },
   { path: "/browse", element: <Browse /> },
   { path: "/profile", element: <Profile /> },
+
+  // admin  starts form here
+  {
+    path: "/admin/companies",
+    element: <Companies />,
+  },
 ]);
 
 function App() {
