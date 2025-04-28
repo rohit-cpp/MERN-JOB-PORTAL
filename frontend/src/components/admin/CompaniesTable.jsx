@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -15,7 +15,23 @@ import { useSelector } from "react-redux";
 import store from "@/redux/store";
 
 const CompaniesTable = () => {
-  const { companies } = useSelector((store) => store.company);
+  const { companies, searchCompanyByText } = useSelector(
+    (store) => store.company
+  );
+  const [filterCompany, setFilterCompany] = useState(companies);
+  useEffect(() => {
+    const filteredCompany =
+      companies.length >= 0 &&
+      companies.filter((company) => {
+        if (!searchCompanyByText) {
+          return true;
+        }
+        return company?.name
+          ?.toLowerCase()
+          .includes(searchCompanyByText.toLowerCase());
+      });
+    setFilterCompany(filteredCompany);
+  }, [companies, searchCompanyByText]);
   return (
     <div>
       <Table>
@@ -30,7 +46,7 @@ const CompaniesTable = () => {
         </TableHeader>
         <TableBody>
           <>
-            {companies?.map((company) => (
+            {filterCompany?.map((company) => (
               <tr>
                 <TableCell>
                   <Avatar className="h-15 w-15">
