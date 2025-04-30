@@ -15,6 +15,7 @@ import PostJobs from "./components/admin/PostJobs";
 import Applicants from "./components/admin/Applicants";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import RoadMap from "./components/RoadMap";
+import AiHelp from "./components/AiHelp";
 const appRouter = createBrowserRouter([
   // student starts form here
   { path: "/", element: <Home /> },
@@ -25,6 +26,7 @@ const appRouter = createBrowserRouter([
   { path: "/browse", element: <Browse /> },
   { path: "/profile", element: <Profile /> },
   { path: "/roadmap", element: <RoadMap /> },
+  { path: "/help", element: <AiHelp /> },
 
   // admin  starts form here
   {

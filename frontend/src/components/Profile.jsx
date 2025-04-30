@@ -95,6 +95,7 @@ const Profile = () => {
         <h1 className="text-center text-3xl font-semibold p-10 underline">
           List of Applied Jobs
         </h1>
+
         <AppliedJobsTable />
       </div>
       <UpdateProfileDialoug open={open} setOpen={setOpen} />

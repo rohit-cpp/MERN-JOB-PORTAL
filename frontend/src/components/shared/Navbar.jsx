@@ -59,19 +59,30 @@ const Navbar = () => {
             ) : (
               <>
                 <li>
-                  <Link to="/">Home</Link>
+                  <Link to="/" className="hover:underline">
+                    Home
+                  </Link>
                 </li>
                 <li>
                   {" "}
-                  <Link to="/jobs">Jobs</Link>{" "}
+                  <Link to="/jobs" className="hover:underline">
+                    Jobs
+                  </Link>{" "}
                 </li>
                 <li>
                   {" "}
-                  <Link to="/browse">Browse</Link>{" "}
+                  <Link to="/browse" className="hover:underline">
+                    Browse
+                  </Link>{" "}
                 </li>
                 <li>
                   {" "}
-                  <Link to="/roadmap">AI RoadMap</Link>{" "}
+                  <Link
+                    to="/roadmap"
+                    className=" rounded-xl p-2 hover:underline bg-amber-400"
+                  >
+                    AI RoadMap
+                  </Link>{" "}
                 </li>
               </>
             )}
