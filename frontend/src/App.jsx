@@ -13,6 +13,7 @@ import CompanySetup from "./components/admin/CompanySetup";
 import AdminJobs from "./components/admin/Jobs.jsx";
 import PostJobs from "./components/admin/PostJobs";
 import Applicants from "./components/admin/Applicants";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
 const appRouter = createBrowserRouter([
   // student starts form here
   { path: "/", element: <Home /> },
@@ -26,7 +27,12 @@ const appRouter = createBrowserRouter([
   // admin  starts form here
   {
     path: "/admin/companies",
-    element: <Companies />,
+    element: (
+      <ProtectedRoute>
+        {" "}
+        <Companies />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin/companies/create",

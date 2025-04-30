@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
+import { useDispatch } from "react-redux";
+import { setSearchedQuery } from "@/redux/jobSlice";
+import { useNavigate } from "react-router-dom";
 
 const HeroSections = () => {
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const searchJobHandler = () => {
+    dispatch(setSearchedQuery(query));
+    navigate("/browse");
+  };
   return (
     <div className="text-center mt-10">
       <span className="px-4 py-2 text-3xl rounded-xl bg-gray-200 text-[#F83002] font-medium">
@@ -20,9 +31,15 @@ const HeroSections = () => {
         <input
           type="text"
           placeholder="Find your dream job"
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
           className="outline-none border-none w-full"
         />
-        <Button className="cursor-pointer text-black bg-amber-400 hover:bg-amber-600">
+        <Button
+          onClick={searchJobHandler}
+          className="cursor-pointer text-black bg-amber-400 hover:bg-amber-600"
+        >
           Search
         </Button>
       </div>

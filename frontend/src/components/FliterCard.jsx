@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "@radix-ui/react-label";
+import { useDispatch } from "react-redux";
+import { setSearchedQuery } from "@/redux/jobSlice";
 
 const filterData = [
   {
@@ -24,25 +26,36 @@ const filterData = [
 ];
 
 const FilterCard = () => {
+  const [selectedValue, setSelectedValue] = useState("");
+  const dispatch = useDispatch();
+  const changeHandler = (value) => {
+    setSelectedValue(value);
+  };
+  useEffect(() => {
+    dispatch(setSearchedQuery(selectedValue));
+  }, [selectedValue]);
   return (
     <div>
       <h1 className="text-2xl font-bold">Filter Jobs</h1>
       <hr className="mt-3" />
       <div>
-        <RadioGroup>
+        <RadioGroup value={selectedValue} onValueChange={changeHandler}>
           {filterData.map((data, index) => (
             <div key={index} className="mt-2">
               <h2 className="font-semibold text-xl">{data.filterType}</h2>
-              {data.array.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 mt-1">
-                  <RadioGroupItem
-                    className="border border-black"
-                    value={item}
-                    id={`${data.filterType}`}
-                  />
-                  <Label htmlFor={`${data.filterType}`}>{item}</Label>
-                </div>
-              ))}
+              {data.array.map((item, idx) => {
+                const itemId = `id${index}-${idx}`;
+                return (
+                  <div key={idx} className="flex items-center gap-2 mt-1">
+                    <RadioGroupItem
+                      className="border border-black"
+                      value={item}
+                      id={itemId}
+                    />
+                    <Label htmlFor={itemId}>{item}</Label>
+                  </div>
+                );
+              })}
             </div>
           ))}
         </RadioGroup>

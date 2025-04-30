@@ -1,40 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./shared/Navbar";
-import FliterCard from "./FliterCard";
+import FilterCard from "./FliterCard";
 import Job from "./Job";
-import { SpaceIcon } from "lucide-react";
-import { Badge } from "./ui/badge";
 import { useSelector } from "react-redux";
-import store from "@/redux/store";
 
-const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 const Jobs = () => {
-  const { allJobs } = useSelector((store) => store.job);
+  const { allJobs, searchedQuery } = useSelector((store) => store.jobs);
+  const [filterJobs, setFilterJobs] = useState(allJobs);
+
+  useEffect(() => {
+    if (searchedQuery) {
+      const filteredJobs = allJobs.filter((job) => {
+        return (
+          job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
+          job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
+          job.location.toLowerCase().includes(searchedQuery.toLowerCase())
+        );
+      });
+      setFilterJobs(filteredJobs);
+    } else {
+      setFilterJobs(allJobs);
+    }
+  }, [allJobs, searchedQuery]);
+
   return (
     <div>
       <Navbar />
-      <div className="flex p-3">
-        <div className="max-w-7xl mx-auto mt-5">
-          <div className="flex gap-5 ">
-            <div className="w-50 h-120">
-              {" "}
-              <FliterCard />
-            </div>
-          </div>
+      <div className="flex p-3 gap-4">
+        {/* Left: Filter */}
+        <div className="w-1/4">
+          <FilterCard />
         </div>
 
-        <div>
-          {allJobs.length <= 0 ? (
-            <span>Job not found</span>
+        {/* Right: Jobs Display */}
+        <div className="w-3/4 h-[88vh] overflow-y-auto pb-5">
+          {filterJobs.length <= 0 ? (
+            <div className="flex justify-center items-center h-full text-xl font-semibold">
+              No jobs found.
+            </div>
           ) : (
-            <div className="flex-1 h-[88vh] overflow-y-auto pb-5">
-              <div className="grid grid-cols-3 gap-4 p-4">
-                {allJobs.map((job) => (
-                  <div key={job?._id}>
-                    <Job job={job} />
-                  </div>
-                ))}
-              </div>
+            <div className="grid grid-cols-3 gap-4 p-4">
+              {filterJobs.map((job) => (
+                <div key={job?._id}>
+                  <Job job={job} />
+                </div>
+              ))}
             </div>
           )}
         </div>

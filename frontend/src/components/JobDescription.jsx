@@ -12,7 +12,7 @@ import store from "@/redux/store";
 import { toast } from "sonner";
 
 const JobDescription = () => {
-  const { singleJob } = useSelector((store) => store.job);
+  const { singleJob } = useSelector((store) => store.jobs);
   const { user } = useSelector((store) => store.auth);
 
   const isIntiallyApplied =
