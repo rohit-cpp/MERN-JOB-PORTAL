@@ -69,6 +69,10 @@ const Navbar = () => {
                   {" "}
                   <Link to="/browse">Browse</Link>{" "}
                 </li>
+                <li>
+                  {" "}
+                  <Link to="/roadmap">AI RoadMap</Link>{" "}
+                </li>
               </>
             )}
           </ul>

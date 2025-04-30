@@ -14,6 +14,7 @@ import AdminJobs from "./components/admin/Jobs.jsx";
 import PostJobs from "./components/admin/PostJobs";
 import Applicants from "./components/admin/Applicants";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
+import RoadMap from "./components/RoadMap";
 const appRouter = createBrowserRouter([
   // student starts form here
   { path: "/", element: <Home /> },
@@ -23,6 +24,7 @@ const appRouter = createBrowserRouter([
   { path: "/description/:id", element: <JobDescription /> },
   { path: "/browse", element: <Browse /> },
   { path: "/profile", element: <Profile /> },
+  { path: "/roadmap", element: <RoadMap /> },
 
   // admin  starts form here
   {
