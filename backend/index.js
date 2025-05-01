@@ -12,6 +12,9 @@ dotenv.config({});
 
 const app = express();
 
+app.get("/", (req, res) => {
+  return res.send("Backend is running");
+});
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
