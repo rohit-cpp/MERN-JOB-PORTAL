@@ -16,6 +16,8 @@ import Applicants from "./components/admin/Applicants";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import RoadMap from "./components/RoadMap";
 import AiHelp from "./components/AiHelp";
+import FeedbackForm from "./components/admin/feedbackForm";
+import AdminFeedbackTable from "./components/admin/AdminFeedbackTable";
 const appRouter = createBrowserRouter([
   // student starts form here
   { path: "/", element: <Home /> },
@@ -57,6 +59,14 @@ const appRouter = createBrowserRouter([
   {
     path: "/admin/jobs/:id/applicants",
     element: <Applicants />,
+  },
+  {
+    path: "/feedback",
+    element: <FeedbackForm />,
+  },
+  {
+    path: "/admin/rohit",
+    element: <AdminFeedbackTable />,
   },
 ]);
 

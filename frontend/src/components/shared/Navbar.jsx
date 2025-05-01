@@ -40,8 +40,8 @@ const Navbar = () => {
     <div className="bg-purple-400 sticky">
       <div className="flex items-center justify-between px-15 mx-auto max-w-7xl h-16">
         <div>
-          <h1 className="text-2xl font-semibold">
-            Job <span className="text-[#f80002]">Portal</span>{" "}
+          <h1 className="text-3xl font-bold">
+            Job <span className="text-red-600">Portal</span>{" "}
           </h1>
         </div>
         <div className="flex items-center gap-2">
@@ -82,6 +82,15 @@ const Navbar = () => {
                     className=" rounded-xl p-2 hover:underline bg-amber-400"
                   >
                     AI RoadMap
+                  </Link>{" "}
+                </li>
+                <li>
+                  {" "}
+                  <Link
+                    to="/feedback"
+                    className=" rounded-xl p-2 hover:underline bg-amber-400"
+                  >
+                    Feedback
                   </Link>{" "}
                 </li>
               </>
