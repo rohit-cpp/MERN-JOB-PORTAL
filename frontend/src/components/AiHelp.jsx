@@ -21,7 +21,9 @@ const AiHelp = () => {
 
     try {
       const response = await axios({
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCpqp4alttTQdUhXDLs6oacAAwvo3nGN3s",
+        url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${
+          import.meta.env.VITE_GEMINI_API
+        }`,
         method: "post",
         data: {
           contents: [

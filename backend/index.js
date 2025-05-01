@@ -13,8 +13,9 @@ dotenv.config({});
 const app = express();
 
 app.get("/", (req, res) => {
-  return res.send("Backend is running");
+  res.redirect(process.env.FRONTEND_URL);
 });
+
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
