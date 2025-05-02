@@ -20,21 +20,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Updated CORS configuration
-const allowedOrigins = ["https://job-portal-frontend-ochre-beta.vercel.app"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://job-portal-frontend-ochre-beta.vercel.app",
+];
 
-app.use((req, res, next) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-  }
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-  );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 // Routes
 app.use("/api/v1/user", userRoute);
