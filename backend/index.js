@@ -47,6 +47,10 @@ app.use("/api/v1/feedback", feedbackRoutes);
 //   res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
 // });
 
+app.get("/", (req, res) => {
+  res.redirect(process.env.FRONTEND_URL);
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
