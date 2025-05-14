@@ -69,7 +69,7 @@ While deploying image uploads:
 | React       | Frontend Framework      |
 | Node.js     | Backend Runtime         |
 | Cloudinary  | Media Uploads           |
-| OpenAI      | AI Feedback & Roadmaps  |
+| GeminiAI      | AI Feedback & Roadmaps  |
 | JWT         | Auth Token Management   |
 
 ---
