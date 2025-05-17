@@ -76,7 +76,7 @@ While deploying image uploads:
 
 ## 📌 Unique Selling Points (USP)
 
-- ✅ **AI-based Rejection Insights** — A feature missing in most platforms
+- ✅ **AI-based Rejection Insights** — A feature missing in most of the platforms
 - ✅ **AI Roadmaps** for career guidance
 - ✅ **Real-Time Application Updates**
 - ✅ **Role-specific Dashboards**
